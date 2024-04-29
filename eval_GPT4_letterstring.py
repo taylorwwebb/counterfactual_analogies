@@ -2,9 +2,7 @@ from openai import OpenAI
 import numpy as np
 import builtins
 import argparse
-import os
 import time
-import pdb
 
 # Set up OpenAI client
 client = OpenAI()
