@@ -1,6 +1,6 @@
 # Evidence from counterfactual tasks supports emergent analogical reasoning in large language models
 
-Code for the paper [Evidence from counterfactual tasks supports emergent analogical reasoning in large language models](https://arxiv.org/abs/2404.13070).
+Code for the paper [Evidence from counterfactual tasks supports emergent analogical reasoning in large language models](https://arxiv.org/abs/2404.13070v2).
 
 Counterfactual letter string analogy problem sets are included in ```all_prob_synthetic_int1.npz``` (for interval-size-1) and ```all_prob_synthetic_int2.npz``` (for interval-size-2).
 
