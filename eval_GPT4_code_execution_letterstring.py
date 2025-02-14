@@ -23,6 +23,8 @@ args = parser.parse_args()
 # Setup GPT-4
 assistant = client.beta.assistants.create(
 	model=args.gpt4_engine,
+	temperature=0,
+	top_p=0,
 	tools=[{"type": "code_interpreter"}], 
 )
 
@@ -113,7 +115,10 @@ for t in range(N_trials_per_prob_type):
 					response += 'Code interpreter:\n'
 					response += run_steps.data[(-1 - t)].step_details.tool_calls[0].code_interpreter.input
 					response += '\n\nOutput:\n'
-					response += run_steps.data[(-1 - t)].step_details.tool_calls[0].code_interpreter.outputs[0].logs
+					if len(run_steps.data[(-1 - t)].step_details.tool_calls[0].code_interpreter.outputs) > 0:
+						response += run_steps.data[(-1 - t)].step_details.tool_calls[0].code_interpreter.outputs[0].logs
+					else:
+						response += 'NO OUTPUT'
 					response += '\n\n'
 			# Present response and correct answer
 			solution = ''.join(prob[1][1])

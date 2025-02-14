@@ -25,7 +25,7 @@ N_prob_types = len(prob_types)
 # Synthetic alphabet and prompt
 alphabet = ['x', 'y', 'l', 'k', 'w', 'b', 'f', 'z', 't', 'n', 'j', 'r', 'q', 'a', 'h', 'v', 'g', 'm', 'u', 'o', 'p', 'd', 'i', 'c', 's', 'e']
 alphabet = ' '.join(alphabet)
-alphabet_prompt = 'Use this fictional alphabet: [' + alphabet + ']. '
+alphabet_prompt = "Let’s solve a puzzle problem involving the following fictional alphabet:\n\n[x y l k w b f z t n j r q a h v g m u o p d i c s e]\n\nHere is the problem:\n\n"
 
 # Evaluate
 N_trials_per_prob_type = 50
@@ -41,7 +41,6 @@ for p in range(N_prob_types):
 		prob = all_prob.item()[prob_types[p]]['prob'][t]
 		prompt = ''
 		prompt += alphabet_prompt
-		prompt += "Let's try to complete the pattern:\n\n"
 		prompt += '['
 		for i in range(len(prob[0][0])):
 			prompt += str(prob[0][0][i])
@@ -60,6 +59,7 @@ for p in range(N_prob_types):
 		prompt += '] [ ? ]\n\n'
 		prompt += 'Please only provide the answer. Do not provide any additional explanation.\n\n'
 		prompt += 'Answer:'
+		print(prompt)
 		# Get response
 		response = []
 		while len(response) == 0:
@@ -76,6 +76,7 @@ for p in range(N_prob_types):
 			except:
 				print('trying again...')
 				time.sleep(5)
+		print(response)
 		prob_type_responses.append(response)
 		prob_type_completions.append(completion)
 	all_prob_type_responses.append(prob_type_responses)
